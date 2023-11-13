@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <title>21 Savage Fan Site</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Create Citations</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+        <!-- LOCAL INFORMATION -->
+        <!-- <div class="col-sm-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+                <% if (user.local.email) { %>
+                    <p>
+                        <strong>id</strong>: <%= user._id %><br>
+                        <strong>email</strong>: <%= user.local.email %><br>
+                        <strong>password</strong>: <%= user.local.password %>
+                    </p>
+                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
+                <% } else { %>
+                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                <% } %>
+            </div>
+        </div> -->
+        
+        <!--CITATIONS AREA-->
+        <!-- <div class="col-sm-6"> -->
+          <h3>Citations</h3>
+          <ul class="messages">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span><%= messages[i].book %></span>
+              <span><%= messages[i].city %></span>
+              <span><%= messages[i].publisher %></span>
+              <span><%= messages[i].year %></span>
+              <span><%= messages[i].notes %></span>
+              <span><%= messages[i].tagsArr.join(', ') %></span>
+              <span><button class="edit">Edit</button></span>
+              <span><button class="delete">Delete</button></span>
+              <!-- ADD TAGS TO ENTRIES (Ro helped me wit this code) -->
+              <div class="tag hidden" id="tag_<%= messages[i]._id %>">
+                <h4>Add a tag</h4>
+                <% if (user.local.email) { %>
+                  <form action="/messages/tag?_method=PUT" method="POST">
+                    <input type="hidden" name="id" value="<%= messages[i]._id %>">
+                    <div class="update-tags">
+                    <input class="update-tag-name" type="text" placeholder="Enter a tag" name="tags">
+                    <button class="tagBut" type="submit">Add Tag</button>
+                    </div>
+                  </form>
+                </div>
+              <% } %>
+            </li>
+          <% } %>
+        </ul>
+          <!--CITATIONS INPUT-->
+          <h2>Enter Book Information</h2>
+          <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="Last Name, First Name" name="name">
+            <input type="text" placeholder="Book Title" name="book">
+            <input type="text" placeholder="City" name="city">
+            <input type="text" placeholder="Publisher" name="publisher">
+            <input type="number" placeholder="Year Published" name="year">
+            <input type="text" placeholder="Your thoughts" name="notes">
+            <button type="submit">Submit</button>
+          </form>
+        <!-- </div> -->
+        <% } %>
+</div>
+</div>
+<script src="main.js"></script>
+
+</body>
+</html>

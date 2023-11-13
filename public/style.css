@@ -1,0 +1,11 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  background: rgb(207, 232, 207)
+}
+img{
+  height: 200px;
+}
+.book {
+  font-style: italic;
+}
