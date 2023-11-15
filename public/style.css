@@ -1,11 +1,74 @@
+* {
+  font-family: Helvetica, sans-serif;
+}
 body{
   padding-top:80px;
   word-wrap:break-word;
-  background: rgb(207, 232, 207)
+  background: rgb(207, 232, 207);
 }
 img{
   height: 200px;
 }
-.book {
+html {
+  font-size: 62.5%;
+}
+.italics, 
+h2 {
   font-style: italic;
+}
+
+h2 {
+  font-size: 1.7rem;
+}
+/* Citations container */
+.messages.container {
+  border: 1px solid black;
+  overflow: scroll;
+  height: 40rem;
+  background: white;
+}
+
+.messages.container::-webkit-scrollbar {
+  width: 12px; /* Set the width of the scrollbar */
+}
+
+.messages.container::-webkit-scrollbar-thumb {
+  background-color: peachpuff; /* Set the color of the scrollbar thumb */
+}
+/* Citations container styles*/
+
+.message {
+  display: flex;
+  flex-wrap: wrap;
+}
+.messages li{
+  list-style-type: none;
+  padding: 1rem;
+  font-size: 2rem;
+}
+.messages span {
+  padding-right: 1rem;
+}
+.blurb {
+  display: block;
+  margin: 5rem;
+  font-size: 1.6rem;
+  color: gray;
+}
+.textBox,
+.delete,
+.submitButton {
+  height: 5rem;
+  background-color: peachpuff;
+  border: .5px solid gray;
+}
+.textBox {
+  width: 80rem;
+  background-color: white;
+}
+.bookInput {
+  margin: 5rem 0;
+}
+.copyright {
+  text-align: center;
 }

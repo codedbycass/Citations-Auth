@@ -1,19 +1,67 @@
 <!doctype html>
 <html>
 <head>
-    <title>21 Savage Fan Site</title>
+    <title>Solo Scholar</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo&family=DM+Sans:opsz,wght@9..40,600&family=Kanit:ital,wght@0,500;1,300&family=Pixelify+Sans&family=Reem+Kufi+Fun&family=Titan+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
+    <header>
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Create Citations</h1>
+        <h1>Solo Scholar</h1>
+        <h2>Reading is an exercise of empathy & compassion towards humanity. Not mastery! Exercise your scholarly mind below.</h2>
+        <p>Cite your sources! Then add on to your critical engagement with these texts by providing your own thoughts and feelings. Entries are sorted by newest to oldest.</p>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
-
+    </header>
     <div class="row">
+        <!--CITATIONS AREA-->
+        <!-- <div class="col-sm-6"> -->
+          <h3>Citations (newest to oldest)</h3>
+          <ul class="messages container">
+          <% for(var i=0; i<messages.length; i++) {%>
+            <li class="message">
+              <span><%= messages[i].name %></span>
+              <span class="italics"><%= messages[i].book %></span>
+              <span><%= messages[i].city %></span>
+              <span><%= messages[i].publisher %></span>
+              <span><%= messages[i].year %></span>
+              <span><%= messages[i].currentDate %></span>
+              <span class="blurb"><%= messages[i].description %></span>
+              <span>
+                <form action="/messages/description?_method=PUT" method="POST" class="formContainer">
+                  <input type="hidden" name="id" value="<%= messages[i]._id %>">
+                  <input type="text" placeholder="Enter description" name="updateDescription" class="textBox">
+                  <button type="submit" class="submitButton">Submit</button>
+                </form>
+              </span>
+              <span><button class="delete">Delete Book</button></span>
+
+            </li>
+            <% } %>
+            </ul>
+        <!--CITATIONS INPUT-->
+          <div class="bookInput">
+          <h2>Enter Book Information</h2>
+          <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="Last Name, First Name" name="name">
+            <input type="text" placeholder="Book Title" name="book">
+            <input type="text" placeholder="City" name="city">
+            <input type="text" placeholder="Publisher" name="publisher">
+            <input type="number" placeholder="Year Published" name="year">
+            <label for="currentDate">Today's date</label>
+            <input type="date" id="currentDate" name="currentDate">
+            <!-- <input type="text" placeholder="Your thoughts" name="notes"> -->
+            <button type="submit">Submit</button>
+          </form>
+          <% } %>
+          </div>
         <!-- LOCAL INFORMATION -->
         <!-- <div class="col-sm-6">
             <div class="well">
@@ -30,47 +78,8 @@
                 <% } %>
             </div>
         </div> -->
-        
-        <!--CITATIONS AREA-->
-        <!-- <div class="col-sm-6"> -->
-          <h3>Citations</h3>
-          <ul class="messages">
-          <% for(var i=0; i<messages.length; i++) {%>
-            <li class="message">
-              <span><%= messages[i].name %></span>
-              <span><%= messages[i].book %></span>
-              <span><%= messages[i].city %></span>
-              <span><%= messages[i].publisher %></span>
-              <span><%= messages[i].year %></span>
-              <span><%= messages[i].description %></span>
-              <span>
-                <form action="/messages/description?_method=PUT" method="POST">
-                  <input type="hidden" name="id" value="<%= messages[i]._id %>">
-                  <input type="text" placeholder="Enter description" name="updateDescription">
-                  <button type="submit">Submit description</button>
-                </form>
-              </span>
-              <span><button class="delete">Delete</button></span>
-            </li>
-          <% } %>
-        </ul>
-          
-        <!--CITATIONS INPUT-->
-          <h2>Enter Book Information</h2>
-          <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" placeholder="Last Name, First Name" name="name">
-            <input type="text" placeholder="Book Title" name="book">
-            <input type="text" placeholder="City" name="city">
-            <input type="text" placeholder="Publisher" name="publisher">
-            <input type="number" placeholder="Year Published" name="year">
-            <!-- <input type="text" placeholder="Your thoughts" name="notes"> -->
-            <button type="submit">Submit</button>
-          </form>
-        <!-- </div> -->
-        <% } %>
 </div>
-</div>
+<p class="copyright">Website by Cassandra Manotham &copy; 2023</p>
 <script src="main.js"></script>
 
 </body>

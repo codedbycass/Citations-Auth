@@ -14,7 +14,7 @@ module.exports = function(app, passport, db) {
     // PROFILE SECTION =========================
     // this section is the page after you log in. 
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('messages').find().sort({currentDate: - 1}).toArray((err, result) => {
           if (err) return console.log(err)
           res.render('profile.ejs', {
             user : req.user,
@@ -35,7 +35,7 @@ module.exports = function(app, passport, db) {
     //THIS DISPLAYS ALL ENTRIES TO THE INTERFACE
     //note: in order for value to be printed on DOM, need to define obj key {publiser : req.body.publisher} etc
     app.post('/messages', (req, res) => {
-      db.collection('messages').insertOne({name: req.body.name, book: req.body.book, city: req.body.city, publisher: req.body.publisher, year: req.body.year, description: ''}, (err, result) => {
+      db.collection('messages').insertOne({name: req.body.name, book: req.body.book, city: req.body.city, publisher: req.body.publisher, year: req.body.year, description: '', currentDate: req.body.currentDate}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
@@ -59,7 +59,7 @@ module.exports = function(app, passport, db) {
     })
     // DELETE BUTTON
     app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, book: req.body.book}, (err, result) => {
+      db.collection('messages').findOneAndDelete({name: req.body.name, book: req.body.book, year: req.body.year}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })
