@@ -42,27 +42,20 @@
               <span><%= messages[i].city %></span>
               <span><%= messages[i].publisher %></span>
               <span><%= messages[i].year %></span>
-              <span><%= messages[i].notes %></span>
-              <span><%= messages[i].tagsArr.join(', ') %></span>
-              <span><button class="edit">Edit</button></span>
+              <span><%= messages[i].description %></span>
+              <span>
+                <form action="/messages/description?_method=PUT" method="POST">
+                  <input type="hidden" name="id" value="<%= messages[i]._id %>">
+                  <input type="text" placeholder="Enter description" name="updateDescription">
+                  <button type="submit">Submit description</button>
+                </form>
+              </span>
               <span><button class="delete">Delete</button></span>
-              <!-- ADD TAGS TO ENTRIES (Ro helped me wit this code) -->
-              <div class="tag hidden" id="tag_<%= messages[i]._id %>">
-                <h4>Add a tag</h4>
-                <% if (user.local.email) { %>
-                  <form action="/messages/tag?_method=PUT" method="POST">
-                    <input type="hidden" name="id" value="<%= messages[i]._id %>">
-                    <div class="update-tags">
-                    <input class="update-tag-name" type="text" placeholder="Enter a tag" name="tags">
-                    <button class="tagBut" type="submit">Add Tag</button>
-                    </div>
-                  </form>
-                </div>
-              <% } %>
             </li>
           <% } %>
         </ul>
-          <!--CITATIONS INPUT-->
+          
+        <!--CITATIONS INPUT-->
           <h2>Enter Book Information</h2>
           <% if (user.local.email) { %>
           <form action="/messages" method="POST">
@@ -71,7 +64,7 @@
             <input type="text" placeholder="City" name="city">
             <input type="text" placeholder="Publisher" name="publisher">
             <input type="number" placeholder="Year Published" name="year">
-            <input type="text" placeholder="Your thoughts" name="notes">
+            <!-- <input type="text" placeholder="Your thoughts" name="notes"> -->
             <button type="submit">Submit</button>
           </form>
         <!-- </div> -->

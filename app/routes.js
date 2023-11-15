@@ -32,33 +32,34 @@ module.exports = function(app, passport, db) {
     });
 
 // message board routes ===============================================================
+    //THIS DISPLAYS ALL ENTRIES TO THE INTERFACE
     //note: in order for value to be printed on DOM, need to define obj key {publiser : req.body.publisher} etc
     app.post('/messages', (req, res) => {
-      db.collection('messages').insertOne({name: req.body.name, book: req.body.book, city: req.body.city, publisher: req.body.publisher, year: req.body.year, notes: req.body.notes, tagsArr: []}, (err, result) => {
+      db.collection('messages').insertOne({name: req.body.name, book: req.body.book, city: req.body.city, publisher: req.body.publisher, year: req.body.year, description: ''}, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
         res.redirect('/profile')
       })
     })
-
-    app.put('/messages/tag', (req, res) => {
-      console.log(req.body)
+    //THIS IS SUPPOSED TO ADD A DESCRIPTION TO THE INTERFACE
+    //PROBLEM: the description gets ad
+    app.put('/messages/description', (req, res) => {
+      console.log(`${req.body} This works!`)
       db.collection('messages')
-      .findOneAndUpdate({_id: Object(req.body.id)}, {
-        $push: {
-          tagsArr : req.body.tags
+      .findOneAndUpdate({_id: ObjectID(req.body.id)}, {
+        $set: {
+          description : req.body.updateDescription
         },
       }, 
-      { returnOriginal: false}, 
+      { returnOriginal: true}, 
       (err, result) => {
         if (err) return res.send(err)
-        // res.send(result)
         res.redirect('/profile')
       })
     })
-
+    // DELETE BUTTON
     app.delete('/messages', (req, res) => {
-      db.collection('messages').findOneAndDelete({name: req.body.name, number: req.body.number}, (err, result) => {
+      db.collection('messages').findOneAndDelete({name: req.body.name, book: req.body.book}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })
