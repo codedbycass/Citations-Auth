@@ -14,12 +14,29 @@
     <header>
     <div class="page-header text-center">
         <h1>Solo Scholar</h1>
-        <h2>Reading is an exercise of empathy & compassion towards humanity. Not mastery! Exercise your scholarly mind below.</h2>
+        <h2>“You think your pain and your heartbreak are unprecedented in the history of the world, but then you read. It was books that taught me that the things that tormented me most were the very things that connected me with all the people who were alive, who had ever been alive.” - James Baldwin</h2>
         <p>Cite your sources! Then add on to your critical engagement with these texts by providing your own thoughts and feelings. Entries are sorted by newest to oldest.</p>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
     </header>
     <div class="row">
+        <!--CITATIONS INPUT-->
+        <div class="bookInput">
+          <h3>Enter Book Information</h3>
+          <% if (user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="Last Name, First Name" name="name">
+            <input type="text" placeholder="Book Title" name="book">
+            <input type="text" placeholder="City" name="city">
+            <input type="text" placeholder="Publisher" name="publisher">
+            <input type="number" placeholder="Year Published" name="year">
+            <label for="currentDate">Today's date</label>
+            <input type="date" id="currentDate" name="currentDate" required>
+            <!-- <input type="text" placeholder="Your thoughts" name="notes"> -->
+            <button type="submit">Submit</button>
+          </form>
+          <% } %>
+        </div>
         <!--CITATIONS AREA-->
         <!-- <div class="col-sm-6"> -->
           <h3>Citations (newest to oldest)</h3>
@@ -45,23 +62,6 @@
             </li>
             <% } %>
             </ul>
-        <!--CITATIONS INPUT-->
-          <div class="bookInput">
-          <h2>Enter Book Information</h2>
-          <% if (user.local.email) { %>
-          <form action="/messages" method="POST">
-            <input type="text" placeholder="Last Name, First Name" name="name">
-            <input type="text" placeholder="Book Title" name="book">
-            <input type="text" placeholder="City" name="city">
-            <input type="text" placeholder="Publisher" name="publisher">
-            <input type="number" placeholder="Year Published" name="year">
-            <label for="currentDate">Today's date</label>
-            <input type="date" id="currentDate" name="currentDate">
-            <!-- <input type="text" placeholder="Your thoughts" name="notes"> -->
-            <button type="submit">Submit</button>
-          </form>
-          <% } %>
-          </div>
         <!-- LOCAL INFORMATION -->
         <!-- <div class="col-sm-6">
             <div class="well">

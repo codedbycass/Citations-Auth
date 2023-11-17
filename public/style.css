@@ -2,7 +2,6 @@
   font-family: Helvetica, sans-serif;
 }
 body{
-  padding-top:80px;
   word-wrap:break-word;
   background: rgb(207, 232, 207);
 }
@@ -19,6 +18,8 @@ h2 {
 
 h2 {
   font-size: 1.7rem;
+  margin: 1rem 10rem;
+  font-weight: 200;
 }
 /* Citations container */
 .messages.container {
@@ -67,7 +68,7 @@ h2 {
   background-color: white;
 }
 .bookInput {
-  margin: 5rem 0;
+  margin: 2rem 0;
 }
 .copyright {
   text-align: center;
