@@ -1,6 +1,8 @@
 # Chicago Citations Generator and Book Log
 
-![giphy](https://github.com/codedbycass/Citations-Auth/assets/122684139/01dc54ae-53de-416d-955a-a6f11bbc5d0a)
+<div style="text-align:center">
+  ![giphy](https://github.com/codedbycass/Citations-Auth/assets/122684139/01dc54ae-53de-416d-955a-a6f11bbc5d0a)
+</div>
 
 ## What
 
