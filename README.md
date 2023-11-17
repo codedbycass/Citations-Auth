@@ -1,8 +1,10 @@
 # Chicago Citations Generator and Book Log
 
+![giphy](https://github.com/codedbycass/Citations-Auth/assets/122684139/01dc54ae-53de-416d-955a-a6f11bbc5d0a)
+
 ## What
 
-This complete full-stack application serves as a Chicago Style Citations generator for books, allowing users to log their thoughts about each book. Users must be logged in to access the book log. After logging in, users can enter the book's details, provide their thoughts, and generate a citation. Upon form submission, users can also add tags to categorize and organize their books effectively.
+This complete full-stack application serves as a Chicago Style Citations generator for books, allowing users to log their thoughts about each book. Users must be logged in to access the book log. After logging in, users can enter the book's details, provide their thoughts, and generate a citation. Upon form submission, users can add their thoughts to reflect on their reading experience!
 
 ## How It's Made
 
@@ -10,6 +12,7 @@ The Chicago Citations Generator and Book Log is built using the following techno
 
 - **Node.js**: Employed for server-side development.
 - **JavaScript (JS)**: Utilized for both client and server-side functionality.
+- **EJS**: Dynamically renders HTML after pulling information from the database.
 - **APIs**: Integrated to enhance the application's features.
 - **MongoDB**: Used as the database to store book log data.
 
